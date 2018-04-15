@@ -8,7 +8,7 @@ import com.util.file.FileUtil;
 
 public abstract class CodePatchAbst {
 
-	protected static final String GIT_CMD_PATH = "D:\\PortableGit\\git-cmd.exe";
+	protected static final String GIT_CMD_PATH = "C:\\Program Files\\Git\\git-cmd.exe";
 	protected static final String DELIM__TAB = "\t";
 
 	private String srcPath;
@@ -22,18 +22,15 @@ public abstract class CodePatchAbst {
 		this.diffFrom = diffFrom;
 		this.diffTo = diffTo;
 	}
-	
 
 	public void process() throws Exception {
 
-		preProcess(srcPath, destPath, diffFrom, diffTo);
-		
 		// git diff to get the result list
 		String cmd2 = String.format("cd %s && git diff --binary --name-status %s %s && exit", srcPath, diffFrom, diffTo);
 		String[] command2 = { GIT_CMD_PATH, cmd2 };
 		List<String> rsltList = FileUtil.runCmd(command2, "Diff result:");
 
-		Map<String,String> paramMap = initParamMap();
+		Map<String, String> paramMap = initParamMap();
 		for (String rslt : rsltList) {
 
 			System.out.println("XXXXXXXXXXXXXXXXXXX");
@@ -80,12 +77,11 @@ public abstract class CodePatchAbst {
 
 					String destDeleteFilePath = destPath + relativePathToBeDeleted;
 					FileUtil.removeAttr("-r", destDeleteFilePath);
-					
+
 					String srcFilePath = srcPath + relativePathToBeAdded;
 					String destFolderPath = destPath + relativePathToBeAdded.substring(0, relativePathToBeAdded.lastIndexOf("\\") + 1);
-					
+
 					rename(destDeleteFilePath, srcFilePath, destFolderPath, paramMap);
-					
 
 				} else {
 					System.out.println(String.format("[Error] Cannot handle: %s", rslt));
@@ -93,7 +89,7 @@ public abstract class CodePatchAbst {
 			}
 
 		}
-		
+
 		postProcess(srcPath, destPath, diffFrom, diffTo);
 
 	}
@@ -101,16 +97,7 @@ public abstract class CodePatchAbst {
 	/**
 	 * @return
 	 */
-	public abstract Map<String,String> initParamMap();
-	
-	/**
-	 * @param srcPath
-	 * @param destPath
-	 * @param diffFrom
-	 * @param diffTo
-	 * @throws Exception
-	 */
-	public abstract void preProcess(String srcPath, String destPath, String diffFrom, String diffTo) throws Exception;
+	public abstract Map<String, String> initParamMap();
 
 	/**
 	 * @param srcPath
@@ -127,7 +114,7 @@ public abstract class CodePatchAbst {
 	 * @param paramMap
 	 * @throws Exception
 	 */
-	public abstract void add(String srcPath, String destPath, Map<String,String> paramMap) throws Exception;
+	public abstract void add(String srcPath, String destPath, Map<String, String> paramMap) throws Exception;
 
 	/**
 	 * @param srcPath
@@ -135,14 +122,14 @@ public abstract class CodePatchAbst {
 	 * @param paramMap
 	 * @throws Exception
 	 */
-	public abstract void modify(String srcPath, String destPath, Map<String,String> paramMap) throws Exception;
+	public abstract void modify(String srcPath, String destPath, Map<String, String> paramMap) throws Exception;
 
 	/**
 	 * @param path
 	 * @param paramMap
 	 * @throws Exception
 	 */
-	public abstract void delete(String path, Map<String,String> paramMap) throws Exception;
+	public abstract void delete(String path, Map<String, String> paramMap) throws Exception;
 
 	/**
 	 * @param deletePath
@@ -151,6 +138,6 @@ public abstract class CodePatchAbst {
 	 * @param paramMap
 	 * @throws Exception
 	 */
-	public abstract void rename(String deletePath, String srcPath, String destPath, Map<String,String> paramMap) throws Exception;
+	public abstract void rename(String deletePath, String srcPath, String destPath, Map<String, String> paramMap) throws Exception;
 
 }

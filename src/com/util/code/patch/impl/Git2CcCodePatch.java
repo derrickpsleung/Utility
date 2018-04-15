@@ -9,39 +9,33 @@ public class Git2CcCodePatch extends CodePatchAbst {
 	}
 
 	@Override
-	public void preProcess(String srcPath, String destPath, String diffFrom, String diffTo) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void postProcess(String srcPath, String destPath, String diffFrom, String diffTo) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void add(String src, String dest, Map<String, String> paramMap) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void modify(String src, String dest, Map<String, String> paramMap) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void delete(String path, Map<String, String> paramMap) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void rename(String deletePath, String src, String dest, Map<String, String> paramMap) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -49,6 +43,5 @@ public class Git2CcCodePatch extends CodePatchAbst {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

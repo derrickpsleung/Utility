@@ -1,5 +1,6 @@
 package com.util.code.patch.impl;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -13,13 +14,9 @@ public class Git2GitCodePatch extends CodePatchAbst {
 
 	private String backUpPath;
 
-	public Git2GitCodePatch(String srcPath, String destPath, String diffFrom, String diffTo, String backUpPath) {
+	public Git2GitCodePatch(String srcPath, String destPath, String diffFrom, String diffTo, String backUpPath) throws IOException, InterruptedException {
+		
 		super(srcPath, destPath, diffFrom, diffTo);
-		this.backUpPath = backUpPath;
-	}
-
-	@Override
-	public void preProcess(String srcPath, String destPath, String diffFrom, String diffTo) throws Exception {
 
 		// stash changes
 		String cmd1 = String.format("cd %s && git stash save && exit", destPath);
@@ -32,6 +29,15 @@ public class Git2GitCodePatch extends CodePatchAbst {
 		String[] command3 = { "CMD", "/C", cmd3 };
 		FileUtil.runCmd(command3, "Make directory result:");
 
+		this.backUpPath = backUpPath + subFolder;
+
+	}
+	
+	@Override
+	public Map<String, String> initParamMap() {
+		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put(PARAM__BACKUP_PATH, this.backUpPath);
+		return paramMap;
 	}
 
 	@Override
@@ -64,11 +70,6 @@ public class Git2GitCodePatch extends CodePatchAbst {
 		add(src, dest, paramMap);
 	}
 
-	@Override
-	public Map<String, String> initParamMap() {
-		Map<String, String> paramMap = new HashMap<String, String>();
-		paramMap.put(PARAM__BACKUP_PATH, backUpPath);
-		return paramMap;
-	}
+
 
 }

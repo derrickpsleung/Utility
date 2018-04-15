@@ -6,16 +6,16 @@ import com.util.code.patch.impl.Git2GitCodePatch;
 public class CodePatchMain {
 
 
-	private static final String BACKUP_PATH = "D:\\Derrick Leung\\BEA\\clearcase\\backup\\";
+	private static final String BACKUP_PATH = "D:\\workspace\\eclipse-workspace\\_backup\\";
 	
 
 	public static void main(String args[]) throws Exception{
 		
-		String srcPath = "D:\\FPS repo\\ccb-clearcase\\TICO016_CM_CR1700234-003_FPS_GIT\\CCB_CM_VOB\\CCB_Source\\";
-		String destPath = "D:\\FPS repo\\ccb2\\";
+		String srcPath = "D:\\workspace\\eclipse-workspace\\Utility\\";
+		String destPath = "D:\\workspace\\eclipse-workspace\\UtilityBk\\";
 		
-		String diffFrom = "4834477b8deda6172fb91cc26c94cd1638f399bd";
-		String diffTo = "0d275a4d9a15a73c6fa92d25bd0eaa6d10a5ba6a";
+		String diffFrom = "2e5d0636a5c0a08cf0924f6f6164e1323e35270e";
+		String diffTo = "c99601490fdef39efd1e269b6e9722ca772d2ef7";
 		
 		//GIT(CC) to GIT
 		CodePatchAbst codePatch = new Git2GitCodePatch(srcPath, destPath, diffFrom, diffTo, BACKUP_PATH);
