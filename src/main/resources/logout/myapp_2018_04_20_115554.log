@@ -1,0 +1,41 @@
+Stash result:
+No local changes to save
+Make directory result:
+Diff result:
+D	src/com/main/CodePatch.java
+A	src/com/main/CodePatchMain.java
+M	src/com/util/code/patch/impl/CodePatchAbst.java
+A	src/com/util/code/patch/impl/Git2CcCodePatch.java
+A	src/com/util/code/patch/impl/Git2GitCodePatch.java
+A	src/com/util/domain/GitActionEnum.java
+XXXXXXXXXXXXXXXXXXX
+D	src/com/main/CodePatch.java
+attrib result:
+move result:
+移動         1 個檔案。
+XXXXXXXXXXXXXXXXXXX
+A	src/com/main/CodePatchMain.java
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\com\main\CodePatchMain.java
+已複製 1 個檔案
+XXXXXXXXXXXXXXXXXXX
+M	src/com/util/code/patch/impl/CodePatchAbst.java
+attrib result:
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\com\util\code\patch\impl\CodePatchAbst.java
+已複製 1 個檔案
+XXXXXXXXXXXXXXXXXXX
+A	src/com/util/code/patch/impl/Git2CcCodePatch.java
+copy result:
+找不到檔案 - Git2CcCodePatch.java
+已複製 0 個檔案
+XXXXXXXXXXXXXXXXXXX
+A	src/com/util/code/patch/impl/Git2GitCodePatch.java
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\com\util\code\patch\impl\Git2GitCodePatch.java
+已複製 1 個檔案
+XXXXXXXXXXXXXXXXXXX
+A	src/com/util/domain/GitActionEnum.java
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\com\util\domain\GitActionEnum.java
+已複製 1 個檔案

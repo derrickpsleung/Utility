@@ -3,14 +3,11 @@ package com.util.code.patch.impl;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.util.file.FileUtil;
 
 public class Git2GitCodePatch extends CodePatchAbst {
 
-	private static final String PARAM__BACKUP_PATH = "BACKUP_PATH";
 
 	private String backUpPath;
 
@@ -34,40 +31,29 @@ public class Git2GitCodePatch extends CodePatchAbst {
 	}
 	
 	@Override
-	public Map<String, String> initParamMap() {
-		Map<String, String> paramMap = new HashMap<String, String>();
-		paramMap.put(PARAM__BACKUP_PATH, this.backUpPath);
-		return paramMap;
-	}
-
-	@Override
 	public void postProcess(String srcPath, String destPath, String diffFrom, String diffTo) throws Exception {
 
 	}
 
 	@Override
-	public void add(String src, String dest, Map<String, String> paramMap) throws Exception {
-		String cmd = String.format("xcopy /Y \"%s\" \"%s\"", src, dest);
-		String[] command = { "CMD", "/C", cmd };
-		FileUtil.runCmd(command, "copy result:");
+	public void add(String src, String dest) throws Exception {
+		FileUtil.addFile(src, dest);
 	}
 
 	@Override
-	public void modify(String src, String dest, Map<String, String> paramMap) throws Exception {
-		add(src, dest, paramMap);
+	public void modify(String src, String dest) throws Exception {
+		add(src, dest);
 	}
 
 	@Override
-	public void delete(String path, Map<String, String> paramMap) throws Exception {
-		String cmd = String.format("move /Y \"%s\" \"%s\"", path, paramMap.get(PARAM__BACKUP_PATH));
-		String[] command = { "CMD", "/C", cmd };
-		FileUtil.runCmd(command, "move result:");
+	public void delete(String path) throws Exception {
+		FileUtil.moveFile(path, this.backUpPath);
 	}
 
 	@Override
-	public void rename(String deletePath, String src, String dest, Map<String, String> paramMap) throws Exception {
-		delete(deletePath, paramMap);
-		add(src, dest, paramMap);
+	public void rename(String deletePath, String src, String dest) throws Exception {
+		delete(deletePath);
+		add(src, dest);
 	}
 
 

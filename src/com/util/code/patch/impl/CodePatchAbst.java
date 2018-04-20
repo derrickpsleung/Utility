@@ -1,13 +1,17 @@
 package com.util.code.patch.impl;
 
 import java.util.List;
-import java.util.Map;
+
+import org.apache.log4j.Logger;
 
 import com.util.domain.GitActionEnum;
 import com.util.file.FileUtil;
 
 public abstract class CodePatchAbst {
 
+	
+	final static Logger logger = Logger.getLogger(CodePatchAbst.class);
+	
 	protected static final String GIT_CMD_PATH = "C:\\Program Files\\Git\\git-cmd.exe";
 	protected static final String DELIM__TAB = "\t";
 
@@ -30,11 +34,11 @@ public abstract class CodePatchAbst {
 		String[] command2 = { GIT_CMD_PATH, cmd2 };
 		List<String> rsltList = FileUtil.runCmd(command2, "Diff result:");
 
-		Map<String, String> paramMap = initParamMap();
+
 		for (String rslt : rsltList) {
 
-			System.out.println("XXXXXXXXXXXXXXXXXXX");
-			System.out.println(rslt);
+			logger.info("XXXXXXXXXXXXXXXXXXX");
+			logger.info(rslt);
 
 			String[] rsltArr = rslt.split(DELIM__TAB);
 
@@ -47,23 +51,23 @@ public abstract class CodePatchAbst {
 
 					String srcFilePath = srcPath + relativeFilePath;
 					String destFolderPath = destPath + relativeFilePath.substring(0, relativeFilePath.lastIndexOf("\\") + 1);
-					add(srcFilePath, destFolderPath, paramMap);
+					add(srcFilePath, destFolderPath);
 
 				} else if (GitActionEnum.MODIFY.getAction().equals(status)) {
 
 					FileUtil.removeAttr("-r", destPath + relativeFilePath);
 					String srcFilePath = srcPath + relativeFilePath;
 					String destFolderPath = destPath + relativeFilePath.substring(0, relativeFilePath.lastIndexOf("\\") + 1);
-					modify(srcFilePath, destFolderPath, paramMap);
+					modify(srcFilePath, destFolderPath);
 
 				} else if (GitActionEnum.DELETE.getAction().equals(status)) {
 
 					FileUtil.removeAttr("-r", destPath + relativeFilePath);
 					String destFilePath = destPath + relativeFilePath;
-					delete(destFilePath, paramMap);
+					delete(destFilePath);
 
 				} else {
-					System.out.println(String.format("[Error] Cannot handle: %s", rslt));
+					logger.info(String.format("[Error] Cannot handle: %s", rslt));
 				}
 
 			}
@@ -81,10 +85,10 @@ public abstract class CodePatchAbst {
 					String srcFilePath = srcPath + relativePathToBeAdded;
 					String destFolderPath = destPath + relativePathToBeAdded.substring(0, relativePathToBeAdded.lastIndexOf("\\") + 1);
 
-					rename(destDeleteFilePath, srcFilePath, destFolderPath, paramMap);
+					rename(destDeleteFilePath, srcFilePath, destFolderPath);
 
 				} else {
-					System.out.println(String.format("[Error] Cannot handle: %s", rslt));
+					logger.info(String.format("[Error] Cannot handle: %s", rslt));
 				}
 			}
 
@@ -94,10 +98,6 @@ public abstract class CodePatchAbst {
 
 	}
 
-	/**
-	 * @return
-	 */
-	public abstract Map<String, String> initParamMap();
 
 	/**
 	 * @param srcPath
@@ -114,7 +114,7 @@ public abstract class CodePatchAbst {
 	 * @param paramMap
 	 * @throws Exception
 	 */
-	public abstract void add(String srcPath, String destPath, Map<String, String> paramMap) throws Exception;
+	public abstract void add(String srcPath, String destPath) throws Exception;
 
 	/**
 	 * @param srcPath
@@ -122,14 +122,14 @@ public abstract class CodePatchAbst {
 	 * @param paramMap
 	 * @throws Exception
 	 */
-	public abstract void modify(String srcPath, String destPath, Map<String, String> paramMap) throws Exception;
+	public abstract void modify(String srcPath, String destPath) throws Exception;
 
 	/**
 	 * @param path
 	 * @param paramMap
 	 * @throws Exception
 	 */
-	public abstract void delete(String path, Map<String, String> paramMap) throws Exception;
+	public abstract void delete(String path) throws Exception;
 
 	/**
 	 * @param deletePath
@@ -138,6 +138,6 @@ public abstract class CodePatchAbst {
 	 * @param paramMap
 	 * @throws Exception
 	 */
-	public abstract void rename(String deletePath, String srcPath, String destPath, Map<String, String> paramMap) throws Exception;
+	public abstract void rename(String deletePath, String srcPath, String destPath) throws Exception;
 
 }
