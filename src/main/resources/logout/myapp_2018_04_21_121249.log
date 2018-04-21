@@ -1,0 +1,72 @@
+Stash result:
+No local changes to save
+Make directory result:
+Diff result:
+D	src/com/main/CodePatch.java
+A	src/com/main/CodePatchMain.java
+M	src/com/util/code/patch/impl/CodePatchAbst.java
+A	src/com/util/code/patch/impl/Git2GitCcCodePatch.java
+A	src/com/util/code/patch/impl/Git2GitCodePatch.java
+A	src/com/util/domain/GitActionEnum.java
+M	src/com/util/file/FileUtil.java
+A	src/main/resources/log4j.properties
+A	src/main/resources/logout/myapp_2018_04_20_105756.log
+A	src/main/resources/logout/myapp_2018_04_20_105931.log
+A	src/main/resources/logout/myapp_2018_04_20_115554.log
+XXXXXXXXXXXXXXXXXXX
+D	src/com/main/CodePatch.java
+attrib result:
+move result:
+移動         1 個檔案。
+XXXXXXXXXXXXXXXXXXX
+A	src/com/main/CodePatchMain.java
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\com\main\CodePatchMain.java
+已複製 1 個檔案
+XXXXXXXXXXXXXXXXXXX
+M	src/com/util/code/patch/impl/CodePatchAbst.java
+attrib result:
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\com\util\code\patch\impl\CodePatchAbst.java
+已複製 1 個檔案
+XXXXXXXXXXXXXXXXXXX
+A	src/com/util/code/patch/impl/Git2GitCcCodePatch.java
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\com\util\code\patch\impl\Git2GitCcCodePatch.java
+已複製 1 個檔案
+XXXXXXXXXXXXXXXXXXX
+A	src/com/util/code/patch/impl/Git2GitCodePatch.java
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\com\util\code\patch\impl\Git2GitCodePatch.java
+已複製 1 個檔案
+XXXXXXXXXXXXXXXXXXX
+A	src/com/util/domain/GitActionEnum.java
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\com\util\domain\GitActionEnum.java
+已複製 1 個檔案
+XXXXXXXXXXXXXXXXXXX
+M	src/com/util/file/FileUtil.java
+attrib result:
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\com\util\file\FileUtil.java
+已複製 1 個檔案
+XXXXXXXXXXXXXXXXXXX
+A	src/main/resources/log4j.properties
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\main\resources\log4j.properties
+已複製 1 個檔案
+XXXXXXXXXXXXXXXXXXX
+A	src/main/resources/logout/myapp_2018_04_20_105756.log
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\main\resources\logout\myapp_2018_04_20_105756.log
+已複製 1 個檔案
+XXXXXXXXXXXXXXXXXXX
+A	src/main/resources/logout/myapp_2018_04_20_105931.log
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\main\resources\logout\myapp_2018_04_20_105931.log
+已複製 1 個檔案
+XXXXXXXXXXXXXXXXXXX
+A	src/main/resources/logout/myapp_2018_04_20_115554.log
+copy result:
+D:\workspace\eclipse-workspace\Utility\src\main\resources\logout\myapp_2018_04_20_115554.log
+已複製 1 個檔案

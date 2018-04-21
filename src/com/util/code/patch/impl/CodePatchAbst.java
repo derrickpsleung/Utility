@@ -29,9 +29,9 @@ public abstract class CodePatchAbst {
 
 	public void process() throws Exception {
 
-		// git diff to get the result list
-		String cmd2 = String.format("cd %s && git diff --binary --name-status %s %s && exit", srcPath, diffFrom, diffTo);
-		String[] command2 = { GIT_CMD_PATH, cmd2 };
+		// git diff to get the result list	
+		String cmd = diffCmd(srcPath, diffFrom, diffTo);
+		String[] command2 = { GIT_CMD_PATH, cmd };
 		List<String> rsltList = FileUtil.runCmd(command2, "Diff result:");
 
 
@@ -139,5 +139,13 @@ public abstract class CodePatchAbst {
 	 * @throws Exception
 	 */
 	public abstract void rename(String deletePath, String srcPath, String destPath) throws Exception;
+	
+	/**
+	 * @param diffPath
+	 * @param diffFrom
+	 * @param diffTo
+	 * @return
+	 */
+	public abstract String diffCmd(String diffPath, String diffFrom, String diffTo);
 
 }
