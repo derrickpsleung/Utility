@@ -47,7 +47,7 @@ public class CodePatchMain {
 		String actId = "";
 		// GIT(CC) to CC
 		codePatch = new Git2CcCodePatch(destPath, actName, actId);
-		codePatch.process();
+//		codePatch.process();
 	}
 
 }
