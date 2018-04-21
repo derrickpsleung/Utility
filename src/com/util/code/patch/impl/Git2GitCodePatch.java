@@ -16,7 +16,7 @@ public class Git2GitCodePatch extends CodePatchAbst {
 		super(srcPath, destPath, diffFrom, diffTo);
 
 		// stash changes
-		String cmd1 = String.format("cd %s && git stash save && exit", destPath);
+		String cmd1 = String.format("cd \"%s\" && git stash save && exit", destPath);
 		String[] command1 = { GIT_CMD_PATH, cmd1 };
 		FileUtil.runCmd(command1, "Stash result:");
 
@@ -54,6 +54,11 @@ public class Git2GitCodePatch extends CodePatchAbst {
 	public void rename(String deletePath, String src, String dest) throws Exception {
 		delete(deletePath);
 		add(src, dest);
+	}
+
+	@Override
+	public String diffCmd(String diffPath, String diffFrom, String diffTo) {
+		return String.format("cd \"%s\" && git diff --binary --name-status %s %s && exit", diffPath, diffFrom, diffTo);
 	}
 
 
